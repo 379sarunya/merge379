@@ -26,6 +26,15 @@
 
       <q-input
         filled
+        v-model="id"
+        label="Your id *"
+        hint="id-code"
+        lazy-rules
+        :rules="[ val => val && val.length > 0 || 'Please type your id-code']"
+      />
+
+      <q-input
+        filled
         type="number"
         v-model="age"
         label="Your age *"
@@ -57,12 +66,14 @@ export default {
 
     const name = ref("ศรัญญา")
     const surname = ref("กลมกลึง")
+    const id = ref("6604101379")
     const age = ref(null)
     const accept = ref(false)
 
     return {
       name,
       surname,
+      id,
       age,
       accept,
 
@@ -88,6 +99,7 @@ export default {
       onReset () {
         name.value = null
         surname.value = null
+        id.value = null
         age.value = null
         accept.value = false
       }
